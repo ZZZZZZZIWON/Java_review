@@ -26,17 +26,16 @@ public class RandomNumber10 {
 			for(int l = 0; l < 10; l++) 
 			{
 			
-			for(int k= l+1 ; k < 10; k++) {
+				for(int k= l+1 ; k < 10; k++) {
 				if(max < Random_num[k])
 					max = Random_num[k];
 					max_index = k;
 			}
 			
-			
-			int temp=0;
-			Random_num[l] = Random_num[max_index];
-			Random_num[max_index] = Random_num[l];
-			Random_num[l] = temp;
+				int temp=0;
+				Random_num[l] = Random_num[max_index];
+				Random_num[max_index] = Random_num[l];
+				Random_num[l] = temp;
 			}
 			
 			System.out.print("max = "+max);
