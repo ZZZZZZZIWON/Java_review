@@ -19,18 +19,19 @@ public class RandomNumber10 {
 			System.out.print(num+ " ");
 			System.out.println();
 			
+			
 			//최댓값 구하기
-			for(int l = 0; l < 10; l++) 
-			{
 			int max = 0;
 			int max_index = 0;
+			for(int l = 0; l < 10; l++) 
+			{
+			
 			for(int k= l+1 ; k < 10; k++) {
 				if(max < Random_num[k])
 					max = Random_num[k];
 					max_index = k;
 			}
-			System.out.print("max = "+max);
-			System.out.println();
+			
 			
 			int temp=0;
 			Random_num[l] = Random_num[max_index];
@@ -38,6 +39,12 @@ public class RandomNumber10 {
 			Random_num[l] = temp;
 			}
 			
+			System.out.print("max = "+max);
+			System.out.println();
+			
+			for(int num : Random_num)
+				System.out.print(num+ " ");
+				System.out.println();
 			
 	}
 
