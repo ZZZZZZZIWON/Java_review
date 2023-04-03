@@ -2,29 +2,36 @@ package homework_0330;
 
 import java.util.Scanner;
 
-public class UpNdownGame {
+public class UpNdownGame2 {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 
 		while (true) {
 			int card = 1 + (int) (Math.random() * 100);
-			System.out.print("Guess the number");
-			System.out.printf("(card:" + card + ")");
-			System.out.println();
+			System.out.print("Guess the number\n");
+			// System.out.printf("(card:" + card + ")");
 			int num = 0;
 			int min = 0;
 			int max = 99;
 			int count = 0;
 
-			while (num != card) {
-				if (max - min <= 1) {
-					System.out.printf("%d or %d", min - 1, max);
+			while (true) {
+				if(num == card) {
+					System.out.println("CORRECT!");
+					break;
+				}
+				
+				if (max - min == 1) {
+					System.out.printf("%d or %d", min, max);
+					System.out.println();
+				} else if(max-min == 0) {
 					System.out.println();
 				} else {
 					System.out.printf("from %d to %d", min, max);
 					System.out.println();
 				}
+				
 				count++;
 				System.out.printf("%d>>", count);
 				num = scan.nextInt();
@@ -37,16 +44,13 @@ public class UpNdownGame {
 					min = num + 1;
 				}
 
-				else {
-					System.out.println("CORRECT!");
-				}
-
 			}
-			System.out.print("PLAY AGAIN?(y/n)>>");
+			
+			System.out.print("PLAY AGAIN?(Y/N)>>");
 			String yn;
 
 			yn = scan.next();
-			if (!yn.equals("y")) {
+			if (!yn.equals("Y")) {
 				break;
 			}
 		}
