@@ -53,16 +53,16 @@ public class Account {
 		return balance;
 	}
 	
-	public static void main(String[] args) {
-		Account account = new Account();
-		account.setOwner("박지원");
-		account.setBalance(100000);
-		System.out.println("Owner : " + account.getOwner());
-		System.out.println("Balance : " + account.getBalance() + "원");
-		
-		account.Deposit(20000);
-		
-	}
+//	public static void main(String[] args) {
+//		Account account = new Account();
+//		account.setOwner("박지원");
+//		account.setBalance(100000);
+//		System.out.println("Owner : " + account.getOwner());
+//		System.out.println("Balance : " + account.getBalance() + "원");
+//		
+//		account.Deposit(20000);
+//		
+//	}
 }
 
 	class AccountTest{
