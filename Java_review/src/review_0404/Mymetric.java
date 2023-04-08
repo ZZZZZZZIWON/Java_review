@@ -7,7 +7,7 @@ public class Mymetric {
 	
 	static double kiloToMile() {
 		return mile = kilo * 1.6093;
-	};
+	}
 	
 	static double mileToKilo() {
 		return kilo = mile / 1.6093;

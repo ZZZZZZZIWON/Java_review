@@ -8,13 +8,13 @@ public class Movie {
 	
 	Movie(){
 		System.out.println("[Harry Potter Series]");
-	};
+	}
 
 	Movie(String title, String date, double rating) {
 		this.title = title;
 		this.date = date;
 		this.rating = rating;
-	};
+	}
 	
 	void printMovie() {
 		System.out.println(title + "\n" + date + "\n" + rating);

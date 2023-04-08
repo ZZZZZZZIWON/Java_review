@@ -7,11 +7,11 @@ public class Rectangle {
 	
 	public double area() {
 		return width * height;
-	};
+	}
 	
 	public double perimeter() {
 		return 2 * (width + height);
-	};
+	}
 	
 	public static void main(String[] args) {
 		Rectangle rec = new Rectangle();

@@ -12,7 +12,7 @@ public class Cylinder {
 		this.c = c;
 		this.height = height;
 		
-	};
+	}
 	
 	public static void main(String[] args) {
 //		Cylinder cylinder = new Cylinder();
