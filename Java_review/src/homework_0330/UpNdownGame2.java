@@ -10,7 +10,7 @@ public class UpNdownGame2 {
 		while (true) {
 			int card = 1 + (int) (Math.random() * 100);
 			System.out.print("Guess the number\n");
-			// System.out.printf("(card:" + card + ")");
+			//System.out.printf("(card:" + card + ")");
 			int num = 0;
 			int min = 0;
 			int max = 99;
