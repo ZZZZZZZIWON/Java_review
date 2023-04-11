@@ -1,7 +1,7 @@
 package review_0404;
 
 
-public class Point {
+public class Point1 {
 	int x;
 	int y;
 	
@@ -12,7 +12,7 @@ public class Point {
 	};
 	
 	public static void main(String[] args) {
-		Point point = new Point();
+		Point1 point = new Point1();
 		System.out.println(point.set(5, 8));
 	}
 }
