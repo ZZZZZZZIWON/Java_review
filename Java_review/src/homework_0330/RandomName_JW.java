@@ -2,7 +2,7 @@ package homework_0330;
 
 import java.util.Scanner;
 
-public class RandomName {
+public class RandomName_JW {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
@@ -13,10 +13,14 @@ public class RandomName {
 		System.out.print("몇 명을 뽑을까요? >> ");
 		int numOfPeople = scan.nextInt();
 
+		int[] selected = new int[numOfPeople];
 		for (int i = 0; i < numOfPeople; i++) {
-			int selected = 1+(int) (Math.random() * 21); 
-			System.out.println(Names[selected] + " "); 
+			int num = 1 + (int) (Math.random() * 21);
+			for(int j=0; j<i; j++)
+				if(selected[j] == num) i--;			 
 		}
-
+		
+		for (int i=0; i < selected.length; i++)
+			System.out.println(Names[i]);
 	}
 }
