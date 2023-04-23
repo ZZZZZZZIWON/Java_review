@@ -4,15 +4,15 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GameUnit {
-    static int bossPower = 10000;
-    private int unitPower = 1000;
+    static int bossPower = 5000;
+    private int unitPower = 500;
     private MyWeapon weapon;
     private String name;
 
     public GameUnit() {
-        Scanner sc = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         System.out.print("게임 참가자의 이름을 입력하세요: ");
-        this.name = sc.nextLine();
+        this.name = scan.nextLine();
         weapon = new MyWeapon();
         weapon.charge(unitPower);
     }
@@ -45,28 +45,38 @@ public class GameUnit {
 
     public static void main(String[] args) {
         GameUnit unit = new GameUnit();
+        Random rand = new Random();
 
         while (true) {
             Scanner sc = new Scanner(System.in);
-            System.out.print("f를 눌러 공격하세요: "); // 공격 메시지 수정
+            System.out.print("옵션을 선택하세요 (f: 공격, i: 아이템): ");
             String input = sc.next();
             
             // "f"를 입력하면 일정한 파워로 공격 실행
             if (input.equals("f")) {
                 int power = 200; // 일정한 파워로 변경
                 unit.attack(power);
+            } 
+            // "i"를 입력하면 칼로 공격 실행 (2분의 1 확률로 charge 발생)
+            else if (input.equals("i")) {
+                int power = 100;
+                boolean chargeSuccess = rand.nextBoolean();
+                if (chargeSuccess) {
+                    unit.weapon.charge(power);
+                    System.out.println("아이템 파워 " + power + " 증가! 현재 파워: " + unit.weapon.getRestPower());
+                } else {
+                    return;
+                }
             } else {
                 System.out.println("잘못된 입력입니다.");
             }
 
             // 보스나 유닛의 체력이 0 이하면 게임 종료
             if (bossPower <= 0) {
-                System.out.println(unit.name + "의 승리!");
+                System.out.println(unit.name + " 승리!");
                 break;
-            }
-
-            if (unit.unitPower <= 0) {
-                System.out.println("GAME OVER");
+            } else if (unit.unitPower <= 0) {
+                System.out.println("게임 오버! 보스 승리!");
                 break;
             }
         }
