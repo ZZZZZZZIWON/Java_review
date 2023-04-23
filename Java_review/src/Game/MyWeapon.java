@@ -2,13 +2,18 @@ package Game;
 
 import java.util.Random;
 
-public class MyWeapon implements weapon {
-    // �냽�꽦 (�븘�뱶)
+class MyWeapon implements weapon {
+
     private int curPower;
+    private Random random;
+
+    public MyWeapon() {
+        random = new Random();
+    }
 
     @Override
     public void fire(int power) {
-        this.curPower = curPower - power;
+        this.curPower -= power;
     }
 
     @Override
@@ -18,11 +23,14 @@ public class MyWeapon implements weapon {
 
     @Override
     public int charge(int power) {
-        return this.curPower = curPower + power;
+        return this.curPower += power;
     }
 
     public boolean Success() {
-        Random random = new Random();
         return random.nextBoolean();
     }
-       }
+
+    public boolean chargeSuccess() {
+        return random.nextBoolean();
+    }
+}

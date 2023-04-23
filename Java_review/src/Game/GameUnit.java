@@ -1,57 +1,74 @@
 package Game;
 
-public class GameUnit extends MyWeapon {
+import java.util.Random;
+import java.util.Scanner;
+
+public class GameUnit {
     static int bossPower = 10000;
-    private int unitPower = 5000;
+    private int unitPower = 1000;
     private MyWeapon weapon;
     private String name;
 
-    public GameUnit(String name) {
-        this.name = name;
+    public GameUnit() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("°ÔÀÓ Âü°¡ÀÚÀÇ ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä: ");
+        this.name = sc.nextLine();
         weapon = new MyWeapon();
         weapon.charge(unitPower);
     }
 
+    // °ø°Ý ¸Þ¼­µå
+    public void attack(int power) {
+        // ÇöÀç ÆÄ¿öº¸´Ù °ø°Ý ÆÄ¿ö°¡ Å©¸é ½ÇÆÐ
+        if (power > weapon.getRestPower()) {
+            System.out.println("°ø°Ý ½ÇÆÐ!");
+            return;
+        }
 
-    public void attack(int power){
-
-        if(this.unitPower < 0) {
-
-            if (weapon.Success()) {
-                System.out.println(this.name + "ï¿½ì“½ æ€¨ë“¦êº½ ï¿½ê½¦æ€¨ï¿½");
-                GameUnit.bossPower = bossPower - power;
-                this.weapon.fire(500);
-                System.out.println("ï¿½ì½ï¿½ì˜± " + name + "ï¿½ì“½ Unit Power = " + this.unitPower);
-                this.weapon.charge(500);
-                System.out.println("ï¿½ì½ï¿½ì˜± Bossï¿½ì“½ Power = " + GameUnit.bossPower);
-                System.out.println("ï¿½ì½ï¿½ì˜± " + name + "ï¿½ì“½ Unit Power = " + this.unitPower);
-                System.out.println();
+        // °ø°Ý ¼º°ø ¿©ºÎ ·£´ý °áÁ¤
+        boolean isSuccess = weapon.Success();
+        if (isSuccess) {
+            bossPower -= power;
+            System.out.println(name + "ÀÇ °ø°Ý ¼º°ø! º¸½ºÀÇ Ã¼·Â: " + bossPower);
+        } else {
+            // ÆÄ¿ö Áõ°¡ ¿©ºÎ ·£´ý °áÁ¤
+            boolean isChargeSuccess = weapon.chargeSuccess();
+            if (isChargeSuccess) {
+                unitPower += 100;
+                System.out.println(name + "ÀÇ °ø°Ý ½ÇÆÐ! ÆÄ¿ö 100 Áõ°¡! ÇöÀç ÆÄ¿ö: " + unitPower);
             } else {
-                System.out.println(this.name + "ï¿½ì“½ æ€¨ë“¦êº½ ï¿½ë–Žï¿½ë™£");
-                this.unitPower -= power;
-                System.out.println("ï¿½ì½ï¿½ì˜± Bossï¿½ì“½ Power = " + GameUnit.bossPower);
-                System.out.println("ï¿½ì½ï¿½ì˜± " + name + "ï¿½ì“½ Unit Power = " + this.unitPower);
-                System.out.println();
+                System.out.println(name + "ÀÇ °ø°Ý ½ÇÆÐ! ÆÄ¿ö º¯È­ ¾øÀ½!");
             }
         }
-    };
-
-    public int charge(int power) {
-        this.weapon.charge(power);
-        return power;
+        weapon.fire(power);
     }
 
     public static void main(String[] args) {
-        GameUnit unit1 = new GameUnit("unit1");
-        GameUnit unit2 = new GameUnit("unit2");
-        while(true) {
-            unit1.attack(500);
-            unit2.attack(500);
-            if(GameUnit.bossPower < 0) {
-                System.out.println("WIN");
+        GameUnit unit = new GameUnit();
+
+        while (true) {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("f¸¦ ´­·¯ °ø°ÝÇÏ¼¼¿ä: "); // °ø°Ý ¸Þ½ÃÁö ¼öÁ¤
+            String input = sc.next();
+            
+            // "f"¸¦ ÀÔ·ÂÇÏ¸é ÀÏÁ¤ÇÑ ÆÄ¿ö·Î °ø°Ý ½ÇÇà
+            if (input.equals("f")) {
+                int power = 200; // ÀÏÁ¤ÇÑ ÆÄ¿ö·Î º¯°æ
+                unit.attack(power);
+            } else {
+                System.out.println("Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù.");
+            }
+
+            // º¸½º³ª À¯´ÖÀÇ Ã¼·ÂÀÌ 0 ÀÌÇÏ¸é °ÔÀÓ Á¾·á
+            if (bossPower <= 0) {
+                System.out.println(unit.name + "ÀÇ ½Â¸®!");
                 break;
             }
 
+            if (unit.unitPower <= 0) {
+                System.out.println("GAME OVER");
+                break;
+            }
         }
     }
 }
