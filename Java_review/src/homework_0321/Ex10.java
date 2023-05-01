@@ -8,23 +8,23 @@ public class Ex10{
 		
 		Scanner scan = new Scanner(System.in);
 		
-		System.out.print("Ã¹¹øÂ° ¿øÀÇ Áß½É°ú ¹İÁö¸§ ÀÔ·Â>>");
+		System.out.print("ì²«ë²ˆì§¸ ì›ì˜ ì¤‘ì‹¬ê³¼ ë°˜ì§€ë¦„ ì…ë ¥>>");
 		double fCenx = scan.nextDouble();
 		double fCeny = scan.nextDouble();
 		double fHalf = scan.nextDouble();
 		
-		System.out.print("µÎ¹øÂ° ¿øÀÇ Áß½É°ú ¹İÁö¸§ ÀÔ·Â>>");
+		System.out.print("ë‘ë²ˆì§¸ ì›ì˜ ì¤‘ì‹¬ê³¼ ë°˜ì§€ë¦„ ì…ë ¥>>");
 		double sCenx = scan.nextDouble();
 		double sCeny = scan.nextDouble();
 		double sHalf = scan.nextDouble();
 		
 		if((sCenx-sHalf > 2*fCenx)&&(sCeny-sHalf > 2*fCeny)) 
 		
-		System.out.println("µÎ ¿øÀº ¼­·Î °ãÄ£´Ù.");
+		System.out.println("ë‘ ì›ì€ ì„œë¡œ ê²¹ì¹œë‹¤.");
 			
 		else
 	
-		System.out.println("µÎ ¿øÀº ¼­·Î °ãÄ¡Áö ¾Ê´Â´Ù.");
+		System.out.println("ë‘ ì›ì€ ì„œë¡œ ê²¹ì¹˜ì§€ ì•ŠëŠ”ë‹¤.");
 		
 		scan.close();
 
